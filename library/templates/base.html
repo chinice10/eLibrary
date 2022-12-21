@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+{%load static%}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Alegreya Sans' rel='stylesheet'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {
+  font-family: "Lato", sans-serif;
+  margin-top: 0px;
+  height: 100%;
+}
+tr {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr 1fr 1fr 1fr 0.5fr 1fr;
+  justify-items: center;
+  border-style: solid;
+  border-width: thin;
+  border-left: 0px;
+  border-right: 0px;
+  border-top: 0px;
+  border-color: white;
+}
+
+tr .th{
+  background-color:rgb(3, 54, 105); 
+  color:white; 
+  padding:  5px 10px; 
+  text-align: center; 
+  font-weight:bold; 
+  font-size:14px;
+}
+
+tr .td{
+  background-color:rgb(57, 87, 117);
+  color:white; 
+  padding: 3px; 
+  text-align: center; 
+  font-weight:bold; 
+  font-size:12px;
+}
+.bg {
+  background-image: url('static/images/bg_mobile.jpeg');
+  height: 100%; 
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.big-container{
+  position:relative;
+  margin: 20px 0px; 
+  width:100%; 
+  height:80%; 
+  overflow-x: scroll; 
+  overflow-y: scroll; 
+  background-color:rgb(3, 54, 105); 
+  opacity:0.7 ;
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color:red;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  text-decoration: none;
+  color: #d2baba;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 40px;
+  color: white;
+  margin:12px; 
+  padding: 8px;
+  padding: 8px;
+  opacity: 0.6 
+  /* border-radius:50%; 
+  background-color: rgb(18, 3, 43); */
+}
+
+.dropdown-container {
+  display: none;
+  padding-left: 8px;
+  margin:0px 0px 0px 32px;
+  border-radius: 10px;
+}
+
+.active {
+  color: white;
+}
+
+.heading {
+  margin: 0px;
+  padding: 20px 32px;
+  font-size: 18px;
+  font-family:'Alegreya Sans';
+  border-color: white;
+  border-style:groove ;
+  border-width: thin;
+  border-left: 0px;
+  border-right: 0px;
+}
+
+.subheading{
+  margin: 0px;
+  padding: 10px 8px;
+  font-size: 15px;
+  font-family:'Alegreya Sans';
+  border-color: white;
+  border-style:groove ;
+  border-width: thin;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  opacity: 0.7;
+} 
+
+.logo{
+  font-size:22px;
+  margin:0px 5px; 
+  padding: 18px 10px ;
+  color: white;
+  font-weight: bold;
+  background-color:red;
+  font-family:'Sofia';
+}
+.opennav{
+  font-size:30px;
+  width: 40px; 
+  text-align: center; 
+  cursor:pointer; 
+  right:0px; 
+  position: fixed; 
+  top:0px; 
+  margin:12px; 
+  padding: 8px; 
+  border-radius:50%; 
+  color: white;
+}
+
+@media screen and (min-width: 400px) {
+  .subheading{font-size: 19px;}
+  .heading{font-size:24px ;}
+  .logo{font-size: 30px;}
+}
+
+@media screen and (min-width: 500px) {
+  .bg{background-image: url('static/images/bg_pc.jpeg'); height: 100%; background-position: center;background-repeat: no-repeat; background-size: cover; }
+  .logo{font-size: 25px; padding: 12px 10px 12px 30px ;}
+  .subheading{font-size: 14px;}
+  .heading{font-size:17px ;}
+  .opennav{margin-right:30px; margin-top:-0.5px ;}
+  .big-container{overflow-x: hidden;}
+}
+</style>
+</head>
+<body>
+<div class="bg">
+<div class="logo">Eunice iLibrary</div>
+<span class="opennav"  onclick="openNav()">&#9776; </span>
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <nav class="nav">
+    <a href="#" class="heading" style="border-top:0px;">Home</a>
+
+    <a href="#" class="dropdown-btn">
+        <p class="heading">Manage Students <i style="font-size:18px; " class="fa fa-caret-down"></i></p>
+    </a>
+    <span class="dropdown-container">
+        <a href="#" class="subheading">Create student</a>
+        <a href="#" class="subheading">All students</a>
+    </span>
+    <a href="#" class="dropdown-btn">
+        <p class="heading">Manage Staffs <i style="font-size:18px; " class="fa fa-caret-down"></i></p>
+    </a>
+    <span class="dropdown-container">
+        <a href="#" class="subheading">Create staff Profile</a>
+        <a href="#" class="subheading">All Staffs</a>
+    </span>
+
+    <a href="#" class="heading">Sign Out</a>
+</div>
+
+
+
+<!-- Page content -->
+
+{% block content %}
+{% endblock %}
+
+<!-- Page content -->
+
+<script>
+function openNav() {
+  document.getElementById("mySidenav").style.width = "60%";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+</script>
+
+
+
+<script>
+    /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+    var dropdown = document.getElementsByClassName("dropdown-btn");
+    var i;
+    
+    for (i = 0; i < dropdown.length; i++) {
+      dropdown[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var dropdownContent = this.nextElementSibling;
+        if (dropdownContent.style.display === "block") {
+          dropdownContent.style.display = "none";
+        } else {
+          dropdownContent.style.display = "block";
+        }
+      });
+    }
+    </script>
+</div>
+</body>
+</html> 
