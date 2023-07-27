@@ -3,36 +3,39 @@
 
 <body>
 {% block content %}
-<div id="message">
+<div class="big-container" >
+<!-- <div id="message">
     {{message}}
 </div>
 <div class="search">
-    <input type="text" class="form-control" id="student_search_input" name="student_name" placeholder="Search student" onchange="search_student()">
+    <input type="text" class="form-control" id="student_search_input" name="student_name" placeholder="Search student" onchange="search_student()"> -->
     <!-- <br> -->
-    <div id="view_searched">
+    <!-- <div id="view_searched">
         <label>Search Results</label>
     </div>
-</div>
+</div> -->
 <table class="table table-striped">
-<tr>
-    <th>Student Roll no </th>
-    <th>Student Name </th>
-    <th>Student Address </th>
-    <th>Student Study Program </th>
-    <th>Student Guardian/parent</th>
-    <th>Guardian/parent Email</th>
-    <th>Actions</th>
+<tr class="tr">
+    <th class="th">Id</th>
+    <th class="th">Student Mat Number </th>
+    <th class="th">Full Name </th>
+    <th class="th">Email Address</th>
+    <th class="th">Study Program </th>
+    <th class="th">Student department</th>
+    <th class="th">Student Faculty</th>
+    <th class="th">Actions</th>
 </tr>
     {%for student in students%}
-    <tr id="{{student.fullname}}" class="student">
-    <td class="roll_number">{{student.roll_number}}</td>
-    <td class="name">{{student.fullname}}</td>
-        <td>{{student.address}}</td>
-        <td>{{student.program}}</td>
-        <td>{{student.Guardian_name}}</td>
-        <td>{{student.Email}}</td>
-        <td><a href="edit/student/{{student.roll_number}}"><i class="fa fa-edit"></i></a> | <a
-        href="delete/student/{{student.roll_number}}"><i class="fa fa-trash-alt"></i></a></td>
+    <tr class="tr student" id="{{student.fullname}}" >
+        <td class="td">{{student.id}}</td>
+        <td class="td mat_no">{{student.mat_no}}</td>
+        <td class="td fullname">{{student.fullname}}</td>
+        <td class="td">{{student.email}}</td>
+        <td class="td">{{student.study_program}}</td>
+        <td class="td">{{student.student_dept}}</td>
+        <td class="td">{{student.student_faculty}}</td>
+        <td class="td"><a href="edit/student/{{student.id}}"><i class="fa fa-edit" style="color: white;"></i></a> | <a
+        href="delete/student/{{student.id}}"><i class="fa fa-trash" style="color: white;""></i></a></td>
     </tr> {% endfor %}
 </table>
 
@@ -48,14 +51,14 @@
     for(i=0;i<students.length;i++){
         if(input !== ""){
             if (students[i].innerHTML.toLowerCase().indexOf(input)>-1 ) {
-                var student_name = document.createTextNode(students[i].getElementsByClassName("name").item(0).textContent);
-                var student_roll_number = document.createTextNode(students[i].getElementsByClassName("roll_number").item(0).textContent);
+                var student_name = document.createTextNode(students[i].getElementsByClassName("fullname").item(0).textContent);
+                var student_mat_number = document.createTextNode(students[i].getElementsByClassName("mat_no").item(0).textContent);
                 var link=document.createElement("a");
-                link.setAttribute("href","#"+students[i].getElementsByClassName("name").item(0).textContent);
+                link.setAttribute("href","#"+students[i].getElementsByClassName("fullname").item(0).textContent);
                 
                 var list_added = document.createElement("li");
                 list_added.appendChild(student_name);
-                list_added.appendChild(student_roll_number);
+                list_added.appendChild(student_mat_number);
                 link.appendChild(list_added);
                 view.appendChild(link);
                 view.style.display="block";
@@ -68,6 +71,7 @@
 }
 
 </script>
+</div>
 {% endblock %}
 </body>
 </html>

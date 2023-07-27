@@ -88,14 +88,16 @@ def edit_book_data(request,id):
     return HttpResponse(f"<label>A book with ID: {id} could not be edited...</label><h2>The feature is comming soon</h2>")
 
 def delete_student(request,roll):
-    return HttpResponse(f"<h2>Delete Student</h2><label>Student with Roll Number: {roll} could not be deleted...</label><h2>The feature is comming soon</h2>")
-    pass
+    obj=Students.objects.get(id=roll)
+    obj.delete()
+    return redirect('/show_students')
 
 def delete_book(request,id):
     return HttpResponse(f"<h2>Delete Book</h2><label>Book with ID: {id} could not be deleted..</label><h2>The feature is comming soon</h2>")
 
 def return_issued_book(request,id):   
     obj=Book_Issue.objects.get(id=id)
+    obj.delete()
     return HttpResponse(f"<h2>Return Issued Book</h2><label>Book <i>{obj.book_instance.book.book_title}</i> issued to <i>{obj.student.fullname}</i> could not be returned..</label><h2>The feature is comming soon</h2>")
 
 def edit_issued(request, id):

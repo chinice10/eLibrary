@@ -4,20 +4,21 @@
 <body>
     
 {% block content %}
+<div class="form-div" >
 <div class="form">
-<form method="POST" action="add_new_student" >
+<form method="POST" action="add_new_student" style="
+padding: 30px;" >
     {% csrf_token %}
-    <label class="label-default">Student Details</label><br>
-    <label>Roll Number:</label><br><div>{{form.roll_number}}</div>
-    <label>Student Name:</label><br> <div> {{form.fullname}}</div>
-    <label>Student Address:</label><br> <div> {{form.address}}</div>
-    <label>Student Study Program:</label><br> <div>{{form.program}}</div><br>
-    <label class="label-default">Student Guardian/Parent Details</label><br>
-
-    <label>Full name:</label><br> <div>{{form.Guardian_name}}</div>
-    <label>Valid Email:</label><br> <div>{{form.Email}}</div>
-    <br> <button type="submit" class="btn btn-success">Add Student</button>
+    <label style="margin-bottom:5px; display:block; background-color: rgb(52, 2, 52); padding-top: 5px; padding-bottom: 5px;"  class="label-default">Student Details</label><br>
+    <label style="font-size: 13px;">Matriculationn Number:</label><div style="margin-bottom:5px;">{{form.mat_no}}</div>
+    <label style="font-size: 13px;">Student fullame:</label><div style="margin-bottom:5px;" > {{form.fullname}}</div>
+    <label style="font-size: 13px;">Student Study Program:</label><div style="margin-bottom:5px;"> {{form.study_program}}</div>
+    <label style="font-size: 13px;">Student department:</label><div style="margin-bottom:5px;">{{form.student_dept}}</div>
+    <label style="font-size: 13px;">Student Faculty:</label><div style="margin-bottom:5px;">{{form.student_faculty}}</div>
+    <label style="font-size: 13px;">Valid Email:</label><div style="margin-bottom:5px;">{{form.email}}</div>
+    <br> <button style="margin-top: -9px;" type="submit" class="btn btn-success">Add Student</button>
 </form>
+</div>
 </div>
 {% endblock %}
 

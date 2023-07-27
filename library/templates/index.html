@@ -3,24 +3,24 @@
 
 <body>
 {% block content %}
-<h1>Library Management System</h1>
-<div id="message">
-    {{message}}
-</div>
 {%load static%}
+
+<div class="form-div" >
 <img src="{%static 'images/Quotes/Quote-5.png' %}">
 <!-- <input type="text" value="{{choosen_img}}"> -->
 
 
 <style>
     img{
-        height:70%;
+        height:80%;
         width:auto;
-        margin: 2%;
+        margin-top: 3%;
+        margin-bottom: 1%;
         border-radius:3em;
+        display: inline-block;
     }
 </style>
-
+</div>
 {% endblock %}
 </body>
 </html>

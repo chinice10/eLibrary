@@ -4,18 +4,21 @@
 <body>
 {% block content %}
 
-    <div class="tablinks">
+    <!-- <div class="tablinks">
         <button onclick="opentab(name)" class="link" name="new_book">New Book</button>
         <button onclick="opentab(name)" class="link" name="new_book_instance">New Book Instance</button>
-    </div>
+    </div> -->
 
-    <div id="new_book" class="books">
+    <!-- <div id="new_book" class="books"> -->
+        
+    <div class="form-div" >
         <form method="POST" action="add_new_book" class="form-inline">
             {% csrf_token %}
-        <label>Book Title.</label><br><div>{{form.book_title}}</div>
-        <label>Book Author.</label><br> <div> {{form.book_author}}</div>
-        <label>Book Pages.</label><br> <div> {{form.book_pages}}</div>
-        <label>Book summary<i>(if any)</i></label><br> <div> {{form.summary}}</div>
+        <label style="font-size: 13px; margin-top:-70px;margin-bottom: -15; display:block;">Book Title</label><br><div>{{form.book_title}}</div>
+        <label style="font-size: 13px;">Book Author</label><br> <div> {{form.book_author}}</div>
+        <label style="font-size: 13px;">Number of pages</label><br> <div> {{form.book_pages}}</div>
+        <label style="font-size: 13px;">Book's Category</label><br> <div> {{form.book_category}}</div>
+        <label style="font-size: 13px;">Short summary of the book<i>(if any)</i></label><br> <div> {{form.book_description}}</div>
         <!-- <div>
             <label>Multiple Same Books</label>    
             <input type="radio" name="mode" id="multiple" value="Multiple" onclick="toggle_quantity_input(id)">
@@ -32,11 +35,11 @@
                 <input name="book_number_list">
             </div>
         </div> -->
-        <br> <button type="submit" class="btn btn-success">Add Book</button> 
+        <br> <button style="font-size: 13px; margin-top:8px;"type="submit" class="btn btn-success">Add Book</button> 
         </form>
     </div>
 
-    <div id="new_book_instance" class="books">
+    <!-- <div id="new_book_instance" class="books">
     <form method="POST" action="add_new_book_instance" class="form-inline">
         {% csrf_token %}
         <label>Book</label><br><div>{{form_instance.book}}</div>
@@ -44,7 +47,7 @@
         <div>{{form_instance.book_number}}</div>
         <br> <button type="submit" class="btn btn-success">Add Book</button> 
     </form>
-    </div>
+    </div> -->
 
 <script type="text/javascript">
     function opentab(tab_name){
@@ -72,7 +75,7 @@
     //     }
     // }
 </script>
-
+</div>
 {% endblock %}
 </body>
 

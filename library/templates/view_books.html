@@ -3,41 +3,42 @@
 
 <body>
 {% block content %}
-<div class="search">
-    <input type="text" class="form-control" id="books_search_input" name="book_name" placeholder="Search a book" onkeyup="search_books()">
+<div class="big-container" >
+<!-- <div class="search">
+    <input type="text" class="form-control" id="books_search_input" name="book_name" placeholder="Search a book" onkeyup="search_books()"> -->
     <!-- <br> -->
-    <div id="book_searched">
+    <!-- <div id="book_searched">
         <label>Search Results</label>
     </div>
-</div>
+</div> -->
 
-<table class="table table-striped">
-<tr>
-    <th>Book ID</th>
-    <th>Book title </th>
-    <th>Book author </th>
-    <th>Book pages </th>
-    <th>book Number </th>
-    <th>Is Available</th>
-    <th>Actions</th>
+<table class="table table-striped" >
+<tr class="tr">
+    <th class="th">Book ID</th>
+    <th class="th">Book title </th>
+    <th class="th">Book author </th>
+    <th class="th">Book pages </th>
+    <th class="th">book Number </th>
+    <th class="th">Is Available</th>
+    <th class="th">Actions</th>
 </tr>
     {%for book in books%}
-    <tr class="book_row">
-    <td >{{book.id}}</td>
-    <td class="title">{{book.book.book_title}}</td>
-    <td>{{book.book.book_author}}</td>
-    <td>{{book.book.book_pages}}</td>
-    <td >{{book.book_number}}</td>
-    <td>
+    <tr class="tr">
+        <td class="td">{{book.id}}</td>
+        <td class="td">{{book.book.book_title}}</td>
+        <td class="td">{{book.book.book_author}}</td>
+        <td class="td">{{book.book.book_pages}}</td>
+        <td class="td">{{book.book_number}}</td>
+        <td class="td">
         {%if  book.Is_borrowed %}
         <span><i class="fa fa-times-circle" style="color:rgb(128, 28, 0)"></i></span>
-        <td>
+        <td class="td">
             <a href="edit/book/{{book.id}}"><i class="fa fa-edit"></i></a>
             </td>
         {%else%}
         <span><i class="fa fa-check-circle" style="color:green"></i></span>
-        <td><a href="edit/book/{{book.id}}"><i class="fa fa-edit"></i></a> | <a
-            href="delete/book/{{book.id}}"><i class="fa fa-trash-alt"></i></a></td>
+        <td class="td"><a href="edit/book/{{book.id}}"><i class="fa fa-edit" style="color:white ;""></i></a> | <a
+            href="delete/book/{{book.id}}"><i  style="color:white ;" class="fa fa-trash"></i></a></td>
         {%endif%}
     </td>
 
@@ -73,6 +74,7 @@
 }
 
 </script>
+</div>
 
 {% endblock %}
 </body>

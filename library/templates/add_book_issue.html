@@ -4,9 +4,11 @@
 <body>
 {% block content %}
 
+<div class="form-div" >
 <form method="POST" action="add_book_issue" class="form-inline">
     {% csrf_token %}
-    <label>Student Details(Name)</label><br>
+    <label>Student Details</label>
+    <br>
     <div id="student_selection">
         <div>{{form.student}}</div>
             <div><input type="text" placeholder="Quick Student Search" id="quick" onkeyup="Quick_search()">
@@ -17,22 +19,23 @@
     <br>
     <hr>
     <div class="book_selection">
-        <label>Book Details(Name/UUID)</label>
+        <label>Book Details</label>
         <br>
-        <div><input type="text" placeholder="Quick Book Search" id="quick_book_search" onkeyup="Quick_book_search()">
-            <div id="quick_book_search_view"></div>
-        </div>
         <select name="book_instance" required id="id_book_instance">
             <option value="" selected>select</option>
             {%for i in book%}
                 <option class="selection" value="{{i.id}}">{{i.book.book_title}} (: {{i.id}})</option>
             {%endfor%}
         </select>
+        <div>
+            <input type="text" placeholder="Quick Book Search" id="quick_book_search" onkeyup="Quick_book_search()">
+            <div class="together" id="quick_book_search_view"></div>
+        </div>
     </div>
 <hr>
-    <label>Remarks</label><br> <div> {{form.remarks_on_issue}}</div>
+    <label style="visibility: hidden;">Remarks</label><br> <div  style="visibility: hidden;"> {{form.remarks_on_issue}}</div>
     <br> 
-    <button type="submit" class="btn btn-success">Issue Book</button>
+    <button type="submit" class="btn btn-success" >Issue Book</button>
 
 </form>
 
@@ -111,6 +114,7 @@
         }
     }
 </script>
+</div>
 {% endblock %}
 </body>
 </html>
